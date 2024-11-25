@@ -6,6 +6,7 @@ def main(dimensions, color):
     grid_bombs=[]
     first_click=0
     flagCount=0
+    counter=0
     if dimensions==9:
         flagCount=15
         grid_bombs=[
@@ -149,6 +150,7 @@ def main(dimensions, color):
     base.geometry("1500x1500")
 
     def switch(event, b):
+        nonlocal counter
         if b["state"]==DISABLED:
             return
         if b["bg"]=="DarkOliveGreen2" or b["bg"]=="firebrick2" or b["bg"]=="chartreuse2" or b["bg"]=="MediumOrchid2" or b["bg"]=="medium turquoise":
@@ -157,10 +159,7 @@ def main(dimensions, color):
             b["bg"]="PeachPuff3"
         determine_value(b)
         b["state"] = DISABLED
-        counter=0
-        for x in frame.winfo_children():
-            if x["state"]==DISABLED:
-                counter+=1
+        counter+=1
         if dimensions==9 and counter==66:
             for x in frame.winfo_children():
                 x["state"]=DISABLED
@@ -251,7 +250,7 @@ def main(dimensions, color):
                 surrounding_bombs+=1
         except IndexError:
             pass
-        while surrounding_bombs==0:
+        if surrounding_bombs==0:
             b["text"]=""
             
         else:
