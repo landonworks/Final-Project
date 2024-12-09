@@ -82,6 +82,7 @@ def secret():
     secretButton["state"]=DISABLED
 
 main=Tk()
+main.title("Minesweeper")
 main.geometry("1500x1500")
 main.config(bg="light gray")
 
@@ -130,4 +131,5 @@ secretButton.place(x=1210, y=0)
 
 
 main.mainloop()
+            
             
