@@ -276,6 +276,7 @@ def main(dimensions, color):
         r= b.grid_info()["row"]
         c= b.grid_info()["column"]
         if first_click==0:
+            b["text"]=""
             timer()
             bomb_count=0
             if grid_bombs[r][c]==1:
